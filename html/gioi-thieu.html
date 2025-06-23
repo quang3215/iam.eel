@@ -53,7 +53,13 @@
   <body>
     <header>
       <nav>
-        <ul>
+        <button
+          class="menu-toggle"
+          onclick="document.querySelector('nav ul').classList.toggle('open')"
+        >
+          ☰ Menu
+        </button>
+        <ul class="responsive-nav">
           <li><a href="/">Trang chủ</a></li>
           <li><a href="/html/dich-vu.html">Dịch vụ</a></li>
           <li><a href="/html/gioi-thieu.html">Giới thiệu</a></li>
@@ -62,7 +68,7 @@
       </nav>
     </header>
 
-    <main>
+    <main class="about-wrapper">
       <h1>Về Minh Quang 28</h1>
       <p>
         Minh Quang 28 là đơn vị chuyên cung cấp giải pháp công nghệ thông tin
