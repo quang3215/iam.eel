@@ -175,3 +175,27 @@ footer {
     padding: 1rem;
   }
 }
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #f5f5f5;
+  }
+
+  .card,
+  .card-content {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+  }
+
+  .neon {
+    color: #00ffff;
+  }
+
+  a {
+    color: #00bcd4;
+  }
+
+  .card-avatar {
+    border: 2px solid #00bcd4;
+  }
+}
