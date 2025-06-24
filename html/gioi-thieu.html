@@ -90,10 +90,13 @@
     </main>
 
     <footer>
-      <p>&copy; 2025 Minh Quang 28. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> Minh Quang 28. All rights reserved.</p>
     </footer>
 
     <!-- Script -->
     <script src="/script.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>

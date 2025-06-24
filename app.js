@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
@@ -10,12 +11,18 @@ app.use(express.json());
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
+  if (!name || !email || !message) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Thiếu thông tin." });
+  }
+
   try {
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "youremail@gmail.com",
-        pass: "your-app-password", // không dùng mật khẩu Gmail trực tiếp!
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     });
 
@@ -30,6 +37,7 @@ app.post("/api/contact", async (req, res) => {
       .status(200)
       .json({ success: true, message: "Đã gửi liên hệ thành công." });
   } catch (err) {
+    console.error(err);
     res.status(500).json({ success: false, message: "Lỗi khi gửi email." });
   }
 });
