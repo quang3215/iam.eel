@@ -4,6 +4,13 @@
                     box-sizing: border-box;
                 }
 
+                html, body {
+                    margin: 0;
+                    padding: 0;
+                    overflow-x: hidden;
+                    max-width: 100vw;
+                }
+
                 body {
                     color: #2b2c48;
                     font-family: "Jost", sans-serif;
@@ -26,6 +33,7 @@
                 }
 
                 .card {
+                    width: 100%;
                     max-width: 340px;
                     margin: auto;
                     overflow-y: auto;
@@ -38,6 +46,7 @@
                     flex-direction: column;
                     border-radius: 10px;
                     box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+                    box-sizing: border-box;
                 }
 
                 .card[data-state="#about"] {
@@ -115,7 +124,7 @@
                     background-size: cover;
                     background-position: center;
                     filter: blur(30px);
-                    transform: scale(1.2);
+                    transform: scale(1.1); /* giảm từ 1.2 để không tràn ngang */
                     transition: 0.5s;
                 }
 
@@ -372,42 +381,66 @@
                 .card-contact {
                     display: flex;
                     align-items: center;
-                    font-size: 13px;
-                    color: #6f6f7b;
+                    font-size: 14px;
+                    color: #333;
                     font-family: "DM Sans", sans-serif;
-                    line-height: 1.6;
-                    cursor: pointer;
+                    padding: 10px 15px;
+                    margin: 8px 0;
+                    background: #f4f6fa;
+                    border-radius: 10px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+                    transition: background 0.3s ease;
+                }
+
+                .card-contact:hover {
+                    background: #e4ecf7;
                 }
 
                 .card-contact+.card-contact {
-                    margin-top: 16px;
+                    margin-top: 8px;
                 }
 
                 .card-contact svg {
-                    flex-shrink: 0;
-                    width: 30px;
-                    min-height: 34px;
+                    width: 22px;
+                    height: 22px;
                     margin-right: 12px;
-                    transition: 0.3s;
-                    padding-right: 12px;
-                    border-right: 1px solid #dfe2ec;
+                    fill: #4e91ff;
                 }
 
                 .contact-me {
-                    border: 0;
-                    outline: none;
-                    background: linear-gradient(to right, rgb(239 83 123 / 62%) 0%, rgb(162 204 81 / 79%) 96%);
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+                    border: none;
+                    background: linear-gradient(135deg, #7ed6df, #70a1ff);
+                    box-shadow: 0 4px 15px rgba(112, 161, 255, 0.4);
                     color: #fff;
-                    padding: 12px 16px;
+                    padding: 14px 18px;
                     width: 100%;
-                    border-radius: 5px;
+                    border-radius: 8px;
                     margin-top: 25px;
                     cursor: pointer;
-                    font-size: 14px;
-                    font-weight: 500;
+                    font-size: 15px;
+                    font-weight: 600;
                     font-family: "Jost", sans-serif;
-                    transition: 0.3s;
+                    transition: background 0.3s ease;
+                }
+
+                .contact-me:hover {
+                    background: linear-gradient(135deg, #70a1ff, #7ed6df);
+                }
+
+                /* Optional: rounded input/button for consistency */
+                input,
+                button {
+                    border-radius: 12px;
+                    border: 2px solid #ccc;
+                    padding: 8px 12px;
+                    font-size: 14px;
+                    transition: 0.3s ease;
+                }
+
+                input:focus,
+                button:hover {
+                    border-color: #70a1ff;
+                    background-color: #f0f8ff;
                 }
 
                 .button {
@@ -426,17 +459,6 @@
                     border-radius: 11px;
                 }
 
-                .call {
-                    background-color: white;
-                    color: rgb(0, 0, 0);
-                    border: 2px solid rgba(0, 0, 0, 0.685);
-                }
-
-                .call:hover {
-                    background-color: rgba(51, 255, 95, 0.397);
-                    color: rgb(255, 0, 0);
-                    border: 2px solid rgba(51, 255, 95, 0.973);
-                }
 
                 .button1 {
                     background-color: #58257b;
@@ -454,29 +476,62 @@
                     border-radius: 11px;
                 }
 
-                .gmail {
-                    background-color: white;
-                    color: rgb(0, 0, 0);
-                    border: 2px solid rgb(0, 0, 0);
-                }
 
-                .gmail:hover {
-                    background-color: #ff8d8d79;
-                    color: white;
-                    border: 2px solid rgba(255, 0, 0, 0.568);
-                }
+/* Modern, creative style for map, call, gmail buttons */
+.map,
+.call,
+.gmail {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-family: "Jost", sans-serif;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10), 0 1.5px 4px rgba(0,0,0,0.06);
+    letter-spacing: 0.02em;
+    outline: none;
+    margin: 4px 0;
+}
 
-                .map {
-                    background-color: white;
-                    color: rgb(0, 0, 0);
-                    border: 2px solid rgb(0, 0, 0);
-                }
+/* Nút vị trí (Hà Nội) */
+.map {
+    background: linear-gradient(135deg, #74ebd5, #9face6);
+}
 
-                .map:hover {
-                    background-color: #00ccff79;
-                    color: white;
-                    border: 2px solid #00ccff4d;
-                }
+.map:hover {
+    background: linear-gradient(135deg, #9face6, #74ebd5);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 20px 2px rgba(116,235,213,0.18);
+}
+
+/* Nút gọi điện (CALL ME) */
+.call {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.call:hover {
+    background: linear-gradient(135deg, #38f9d7, #43e97b);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 20px 2px rgba(67,233,123,0.18);
+}
+
+/* Nút gửi mail */
+.gmail {
+    background: linear-gradient(135deg, #f857a6, #ff5858);
+}
+
+.gmail:hover {
+    background: linear-gradient(135deg, #ff5858, #f857a6);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 8px 20px 2px rgba(248,87,166,0.18);
+}
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #121212;
@@ -501,3 +556,10 @@
     border: 2px solid #00bcd4;
   }
 }
+
+                @media (max-width: 400px) {
+                    .card {
+                        width: 95%;
+                        margin: auto;
+                    }
+                }
