@@ -24,9 +24,64 @@
                     padding: 20px;
                     --link-background-gradient-style: to bottom;
                     --link-button-color: #FFFFFF;
-                    background: linear-gradient(var(--link-background-gradient-style), #CB5EEE, #4be1ec);
+                    /* background: linear-gradient(var(--link-background-gradient-style), #CB5EEE, #4be1ec); */
                     font-family: MavenPro;
+
                 }
+
+                /* mới  */
+                @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+@property --hue1 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --hue2 {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+body {
+
+  position: relative;
+
+
+  overflow-x: hidden;
+  background-image: linear-gradient(
+      in oklch longer hue to right,
+      oklch(0.93 0.08 var(--hue1) / 50%),
+      oklch(0.93 0.08 var(--hue2) / 50%)
+    ),
+    linear-gradient(
+      in oklch longer hue to bottom,
+      oklch(0.93 0.08 var(--hue1) / 50%),
+      oklch(0.93 0.08 var(--hue2) / 50%)
+    );
+
+  background-size: 100% 100%;
+
+  animation-name: anim_bg;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes anim_bg {
+  0% {
+    --hue1: 0deg;
+    --hue2: 300deg;
+  }
+
+  100% {
+    --hue1: 360deg;
+    --hue2: 660deg;
+  }
+}
+main {
+  position: relative;
+}
+
+/* kết */
 
                 .call {
                     color: rgb(0, 0, 0);
